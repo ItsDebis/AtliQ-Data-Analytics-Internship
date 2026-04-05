@@ -1,28 +1,30 @@
 # Internship Week 2 Summary
 
-**Intern:** Deepak Biswas  
-**Week:** Week 2  
+**Intern:** Deepak Biswas
+**Week:** Week 2
 **Domain:** Data Analytics
 
 ---
 
 ## Table of Contents
 
-1. [E-Mail 1 - Variance Analysis Task](#e-mail-1---variance-analysis-task)
-2. [Work and Response - Task 1 Variance Analysis](#work-and-response---task-1-variance-analysis)
-3. [E-Mail 2 - SQL Debugging Task](#e-mail-2---sql-debugging-task)
-4. [Work and Response - Task 2 SQL Debugging](#work-and-response---task-2-sql-debugging)
-5. [E-Mail 3 - Network and Activity Data Task](#e-mail-3---network-and-activity-data-task)
-6. [Work and Response - Task 3 Network and Activity Aggregation](#work-and-response---task-3-network-and-activity-aggregation)
-7. [Key Takeaways](#key-takeaways)
+1. [Task 1 — Variance Analysis](#task-1--variance-analysis)
+2. [Task 2 — SQL Debugging](#task-2--sql-debugging)
+3. [Task 3 — Network and Activity Data Aggregation](#task-3--network-and-activity-data-aggregation)
+4. [Task 4 — Insights Presentation: Wavecon 5G Impact Analysis](#task-4--insights-presentation-wavecon-5g-impact-analysis)
+5. [Key Takeaways](#key-takeaways)
 
 ---
 
-## E-Mail 1 - Variance Analysis Task
+## Task 1 — Variance Analysis
 
-**Subject:** Variance Analysis - Benchmark vs Actual Data
+**Tool Used:** Power BI — Power Query, DAX Measures, and Report View
 
-You need to conduct variance analysis to compare benchmark data (`benchmarks.csv`) with current data (`fact_orders.csv`). The goal of this analysis is to identify and quantify the differences or variations between the two datasets. Specifically, you will be comparing the order quantity and delivery quantity from the `fact_orders.csv` file with the benchmark data provided in `benchmarks.csv`.
+### Objective
+
+Perform Variance Analysis between the Benchmark dataset and the Actual operational dataset to analyze and compare two key metrics: Order Quantity and Delivery Quantity.
+
+This comparison evaluates how closely the actual performance aligns with the expected benchmark performance for each customer across different months.
 
 ---
 
@@ -42,30 +44,6 @@ Contains columns: `mmm_yy`, `customer_id`, `customer_name`, `city`, `total_order
 
 ---
 
-### Workflow
-
-1. Review the benchmark data and the current data from `fact_orders.csv`
-2. Metrics to compare: Order Quantity and Delivery Quantity
-3. Calculate the absolute variance between benchmark data and current data for each metric
-4. Calculate the percentage variance between benchmark data and current data for each metric
-5. Provide a complete report of the differences between the benchmark data and the main data
-
----
-
-## Work and Response - Task 1 Variance Analysis
-
-**Tool Used:** Power BI - Power Query, DAX Measures, and Report View
-
----
-
-### Objective
-
-Perform Variance Analysis between the Benchmark dataset and the Actual operational dataset to analyze and compare two key metrics: Order Quantity and Delivery Quantity.
-
-This comparison evaluates how closely the actual performance aligns with the expected benchmark performance for each customer across different months.
-
----
-
 ### Data Loading and Validation
 
 All three datasets were imported into Power BI Desktop using:
@@ -74,7 +52,7 @@ All three datasets were imported into Power BI Desktop using:
 Home -> Get Data -> CSV
 ```
 
-**Validation - fact_orders Table**
+**Validation — fact_orders Table**
 
 | Column               | Data Type    | Status |
 |----------------------|--------------|--------|
@@ -92,7 +70,7 @@ Column profiling confirmed 100% valid values, 0% errors, and 0% empty values acr
 
 ---
 
-### Data Modeling - Star Schema
+### Data Modeling — Star Schema
 
 After validating the datasets, relationships were established between the tables.
 
@@ -253,21 +231,17 @@ Formula: `ABS(benchmark_delivery_qty - recorded_delivery_qty)`
 
 ---
 
-## E-Mail 2 - SQL Debugging Task
-
-**Subject:** SQL Query Debugging - Urgent
-
-We have some SQL queries created by our previous interns, and it seems they were not debugged. Please download the `gdb080.sql` file and load it into your MySQL Workbench. Open the `sql_queries.docx` file to view the list of queries that need to be debugged. Each query has errors that need to be identified and fixed. Please ensure that you test each query thoroughly after fixing.
-
----
-
-## Work and Response - Task 2 SQL Debugging
+## Task 2 — SQL Debugging
 
 **Tool Used:** MySQL Workbench | Database: gdb080
 
+### Objective
+
+Debug and correct a set of SQL queries created by previous interns. Each query contained syntax and logical errors that needed to be identified, fixed, and validated against the `gdb080` database.
+
 ---
 
-### Question 1 - Unique Customers in Surat
+### Question 1 — Unique Customers in Surat
 
 **Question:** How many unique customers are in the city of Surat?
 
@@ -282,8 +256,8 @@ WHERE city == 'surat';
 
 **Errors Identified**
 
-- `FORM` is a typo - correct keyword is `FROM`
-- `==` is not valid SQL syntax for equality - correct operator is `=`
+- `FORM` is a typo — correct keyword is `FROM`
+- `==` is not valid SQL syntax for equality — correct operator is `=`
 
 **Corrected Query**
 
@@ -298,7 +272,7 @@ WHERE city = 'surat';
 
 ---
 
-### Question 2 - Minimum and Maximum Order Quantities per Product
+### Question 2 — Minimum and Maximum Order Quantities per Product
 
 **Question:** What are the minimum and maximum order quantities for each product? What is the highest quantity for the product 'AM Tea 100'?
 
@@ -318,7 +292,7 @@ GROUP BY p.product_id;
 **Errors Identified**
 
 - Missing comma between `minimum_qty` and `MAX(...)` lines
-- `MIN` and `MAX` referenced `p.order_qty` from the products table - correct reference is `f.order_qty` from the fact table
+- `MIN` and `MAX` referenced `p.order_qty` from the products table — correct reference is `f.order_qty` from the fact table
 - `p.product_name` was missing from the `GROUP BY` clause
 
 **Corrected Query**
@@ -341,7 +315,7 @@ GROUP BY
 
 ---
 
-### Question 3 - Unfulfilled Orders by Month
+### Question 3 — Unfulfilled Orders by Month
 
 **Question:** Generate a report with month name and number of unfulfilled orders in that month. In which month were the unfulfilled orders the highest?
 
@@ -358,9 +332,9 @@ ORDER BY unfullfilled_orders DESC;
 
 **Errors Identified**
 
-- `as month_name` was placed inside the `MONTHNAME()` function parentheses - the alias must be placed outside the closing parenthesis
+- `as month_name` was placed inside the `MONTHNAME()` function parentheses — the alias must be placed outside the closing parenthesis
 - `SUM(order_qty-delivery_qty)` is missing the alias `as unfullfilled_orders`
-- Table name `fact_orders_lines` is incorrect - correct name is `fact_order_lines`
+- Table name `fact_orders_lines` is incorrect — correct name is `fact_order_lines`
 
 **Corrected Query**
 
@@ -377,7 +351,7 @@ ORDER BY unfullfilled_orders DESC;
 
 ---
 
-### Question 4 - Percentage Breakdown of Order Quantity by Category
+### Question 4 — Percentage Breakdown of Order Quantity by Category
 
 **Question:** What is the percentage breakdown of order quantity by category? What percentage does the 'food' category account for?
 
@@ -402,8 +376,8 @@ order by order_qty_pct DESC;
 
 **Errors Identified**
 
-- Semicolon inside the CTE closing parenthesis terminates the statement early - it must be removed
-- The outer `SELECT` referenced `total_order_quantity_by_category` but the CTE was named `total_order_qty_by_category` - the name must match exactly
+- Semicolon inside the CTE closing parenthesis terminates the statement early — it must be removed
+- The outer `SELECT` referenced `total_order_quantity_by_category` but the CTE was named `total_order_qty_by_category` — the name must match exactly
 
 **Corrected Query**
 
@@ -429,7 +403,7 @@ ORDER BY order_qty_pct DESC;
 
 ---
 
-### Question 5 - Customer On-Time Target Percentage Category
+### Question 5 — Customer On-Time Target Percentage Category
 
 **Question:** Generate a report with customer_id, customer_name, ontime_target_pct, and percentage_category. How many customers fall in the 'Above 90' category?
 
@@ -453,11 +427,11 @@ ON t.customer_id = c.customer_id;
 
 **Errors Identified**
 
-- `'Above 90"` uses mismatched quotes - opening single quote with closing double quote
+- `'Above 90"` uses mismatched quotes — opening single quote with closing double quote
 - `"Below 70"` uses double quotes instead of single quotes
 - Trailing comma after `percentage_category` before `FROM` causes a syntax error
-- `ELSE 'Below 70'` does not match the task specification - correct label is `'Less than 70'`
-- `customer_id` and `customer_name` in the `SELECT` are ambiguous - must be prefixed with alias `c`
+- `ELSE 'Below 70'` does not match the task specification — correct label is `'Less than 70'`
+- `customer_id` and `customer_name` in the `SELECT` are ambiguous — must be prefixed with alias `c`
 
 **Corrected Query**
 
@@ -499,7 +473,7 @@ HAVING percentage_category = 'Above 90';
 
 ---
 
-### Question 6 - Products by Category with Count
+### Question 6 — Products by Category with Count
 
 **Question:** List all product categories with product names and total count of products. What is the count of distinct products in the 'Dairy' category?
 
@@ -515,7 +489,7 @@ GROUP category;
 **Errors Identified**
 
 - Missing comma between `products` and `COUNT(*)` lines
-- `GROUP category` is missing the keyword `BY` - correct syntax is `GROUP BY`
+- `GROUP category` is missing the keyword `BY` — correct syntax is `GROUP BY`
 
 **Corrected Query**
 
@@ -532,7 +506,7 @@ GROUP BY category;
 
 ---
 
-### Question 7 - Top 3 Most Demanded Products in Dairy Category
+### Question 7 — Top 3 Most Demanded Products in Dairy Category
 
 **Question:** What are the top 3 most demanded products in the 'Dairy' category and their order quantities in millions? What is the combined total order quantity for those top 3 products?
 
@@ -552,7 +526,7 @@ LIMIT 3;
 
 **Errors Identified**
 
-- `f.order_qt` is a typo - correct column name is `f.order_qty`
+- `f.order_qt` is a typo — correct column name is `f.order_qty`
 - The `JOIN` clause is missing the `ON` condition
 
 **Corrected Query**
@@ -593,7 +567,7 @@ FROM (
 
 ---
 
-### Question 8 - OTIF Percentage for Vijay Stores
+### Question 8 — OTIF Percentage for Vijay Stores
 
 **Question:** Calculate the OTIF percentage for the customer named Vijay Stores.
 
@@ -612,8 +586,8 @@ WHERE c.customer_name = "Vijay Stores";
 
 **Errors Identified**
 
-- `c.customer_names` is an incorrect column name - correct column is `c.customer_name`
-- `WHERE` clause is placed after `GROUP BY` - in SQL, `WHERE` must always appear before `GROUP BY`
+- `c.customer_names` is an incorrect column name — correct column is `c.customer_name`
+- `WHERE` clause is placed after `GROUP BY` — in SQL, `WHERE` must always appear before `GROUP BY`
 
 **Corrected Query**
 
@@ -632,7 +606,7 @@ GROUP BY c.customer_name;
 
 ---
 
-### Question 9 - In Full Percentage by Product
+### Question 9 — In Full Percentage by Product
 
 **Question:** What is the percentage of 'in full' for each product and which product has the highest percentage? How many products have an IF percentage greater than 67%?
 
@@ -658,7 +632,7 @@ order by IF_percentage DESC;
 **Errors Identified**
 
 - `CASE WHEN f.in_full = 1 THEN 1 ELSE 0` is missing the closing `END` keyword
-- `ROUND(if_count / total_count * 100), 2)` has a mismatched parenthesis - the closing parenthesis was placed before `, 2` instead of after it
+- `ROUND(if_count / total_count * 100), 2)` has a mismatched parenthesis — the closing parenthesis was placed before `, 2` instead of after it
 
 **Corrected Query**
 
@@ -707,19 +681,9 @@ WHERE (if_count / total_count) * 100 > 67;
 
 ---
 
-## E-Mail 3 - Network and Activity Data Task
+## Task 3 — Network and Activity Data Aggregation
 
-**Subject:** Power Query Transformation - Network and Activity Data
-
-One of our clients in the Network services domain is currently creating a weekly report manually. This process can be automated. I have provided you with two Excel sheets - `network_data.csv` and `activity_data.csv` - containing data related to the client's network operations. Your task is to use Power Query to manipulate and transform the data from these files and create a new table that meets the specified format using pivot, merge, and header manipulation techniques.
-
----
-
-## Work and Response - Task 3 Network and Activity Aggregation
-
-**Tool Used:** Power BI - Power Query Editor
-
----
+**Tool Used:** Power BI — Power Query Editor
 
 ### Objective
 
@@ -743,7 +707,7 @@ Example status values: Maintenance Work, Network Auditing, Network Expansion, Ne
 
 ---
 
-### Step 1 - Loading the Data
+### Step 1 — Loading the Data
 
 Both CSV files were loaded into Power BI using:
 
@@ -757,7 +721,7 @@ The Transform Data option was used to open Power Query Editor for all transforma
 
 ---
 
-### Step 2 - Promoting First Row as Headers
+### Step 2 — Promoting First Row as Headers
 
 Both tables initially contained generic column names such as Column1, Column2, and Column3. Since the actual column names were present in the first row, the following step was applied to both tables:
 
@@ -767,7 +731,7 @@ Home -> Use First Row as Headers
 
 ---
 
-### Step 3 - Pivoting the Network Data
+### Step 3 — Pivoting the Network Data
 
 The `network_data` table contained multiple rows per city representing different network statuses. To convert statuses into columns, the Pivot Column transformation was applied.
 
@@ -797,7 +761,7 @@ The same transformation was then applied to the `activity_data` table using the 
 
 ---
 
-### Step 4 - Merging the Two Tables
+### Step 4 — Merging the Two Tables
 
 After pivoting both datasets, they were combined into a single table using the Merge Queries feature.
 
@@ -818,7 +782,7 @@ This ensured that all cities from the activity dataset were retained along with 
 
 ---
 
-### Step 5 - Expanding and Finalizing the Output
+### Step 5 — Expanding and Finalizing the Output
 
 After merging, a nested `network_data` column appeared in the table. To bring those columns into the main table:
 
@@ -875,11 +839,139 @@ Each column value represents the count of records belonging to that category wit
 
 ---
 
-### Additional Reference
+## Task 4 — Insights Presentation: Wavecon 5G Impact Analysis
 
-![Week 2 - Overall Analysis and Dashboard View](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_2_T_4_image_1.png)
+**Tool Used:** Power BI Dashboard + PowerPoint Presentation
 
-![Week 2 - Supporting Output Reference](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_2_T_4_image_2.png)
+### Objective
+
+Analyze the business impact of Wavecon's 5G rollout across 15 cities using a pre-built dashboard. The goal was to derive meaningful insights from key performance indicators, identify operational issues, and present evidence-based recommendations to stakeholders.
+
+---
+
+### Executive Summary
+
+The 5G rollout increased Average Revenue Per User (ARPU) but did not immediately increase total revenue. Instead, active users declined and cancellations rose, signalling a customer-retention problem.
+
+| KPI                  | Before 5G    | After 5G     | Change     |
+|----------------------|--------------|--------------|------------|
+| Total Revenue        | ₹15.977B     | ₹15.897B     | −0.50%     |
+| ARPU                 | ₹190.2       | ₹211.3       | +11.05%    |
+| Total Active Users   | 84.4M        | 77.4M        | −8.28%     |
+| Unsubscribed Users   | 5.6M         | 7.0M         | +23.50%    |
+
+Revenue per customer increased (positive), but the total user base shrank (negative). If churn continues, long-term revenue and market share are at risk.
+
+---
+
+### Key Insights
+
+#### 1. Revenue Impact — Overall
+
+- Total revenue declined slightly from ₹15.977B to ₹15.897B (−0.50%) after the 5G rollout.
+- The decline, while small in percentage, is meaningful given the scale of the business.
+- Higher ARPU has not offset the fall in active users — volume loss is the primary driver of the revenue dip.
+
+#### 2. Revenue Impact — City Level
+
+- Revenue trends are not uniform across cities.
+- **Largest declines:** Delhi (−2.83%) and Chennai (−2.59%).
+- **Growth cities:** Lucknow (+1.82%), Gurgaon (+1.51%), Patna (+1.48%).
+- The problem is not the 5G technology itself, but how it is being delivered and positioned across different regions.
+
+#### 3. Total Active Users (TAU)
+
+- TAU fell from 84.4M to 77.4M, a decline of 8.28% — the most critical operational red flag.
+- City-level breakdown shows notable drops in Ahmedabad, Delhi, Mumbai, and Bangalore, while Pune bucked the trend.
+- TAU is the leading indicator for sustained revenue. If it does not stabilise, churn will erode any ARPU gains.
+
+#### 4. Customer Churn — Unsubscribed Users
+
+- Cancellations surged from 5.6M to 7.0M (+23.5%) post-launch.
+- High cancellation growth is concentrated in specific cities, pointing to localised causes such as network quality or competitive offers.
+- Mumbai is an exception, showing cancellations down — likely due to local promotional activity or superior network experience.
+- The pattern of higher churn alongside higher ARPU suggests a **value-segregation effect**: higher-value customers stay and pay more, while lower-value customers leave.
+
+#### 5. ARPU Performance
+
+- ARPU rose strongly from ₹190 to ₹211 (+11%), indicating that some customers are actively adopting premium 5G plans.
+- This proves customers are willing to pay for 5G value and provides a foundation for profitable 5G bundle development.
+- However, ARPU alone cannot sustain growth if the total user base continues to shrink.
+
+#### 6. Market Share and Competitive Context
+
+- Wavecon's market share remains at approximately 19–21%, while the leading competitor PIO holds approximately 35%.
+- The 5G rollout did not materially change Wavecon's competitive position within the 8-month observation window.
+- 5G technology alone does not guarantee competitive advantage — distribution, pricing, and perceived customer experience all play significant roles.
+
+#### 7. City Revenue Concentration
+
+- Revenue is concentrated in a small number of metros: Mumbai (~₹4.9B), Delhi (~₹3.9B), Kolkata (~₹3.8B), Bangalore, and Chennai.
+- Any negative shift in metro performance has a disproportionately large revenue impact.
+- Tier-2 and Tier-3 cities show pockets of growth, representing an opportunity to scale where 5G adoption is smoother.
+
+---
+
+### Root Cause Analysis
+
+| Observation             | Likely Causes                                                                                         |
+|-------------------------|-------------------------------------------------------------------------------------------------------|
+| ARPU ↑ but Revenue ↓    | Customer mix shift (high-value stay, low-value leave); mass adoption lags device upgrade cycles       |
+| TAU decline             | Network coverage gaps; SIM migration friction; competitor promotional porting; activation errors       |
+| Metros worst affected   | Higher network congestion; greater competitive intensity; higher price sensitivity among urban users   |
+| Tier-2 cities growing   | Lower congestion; smoother upgrade paths; less competitive pressure; localised offers performing well  |
+
+---
+
+### Recommended Actions
+
+1. **Fix Network Experience** — Prioritise reliability and latency improvements in cities with the highest churn, specifically Delhi, Chennai, and Ahmedabad.
+
+2. **Targeted Retention Programs** — Launch immediate win-back campaigns with tailored offers for at-risk customer segments, including discounted 5G migration, temporary bill credits, and expedited SIM swaps.
+
+3. **Tariff Redesign** — Develop 5G-ready bundles with clear upgrade paths, value-added services (OTT streaming, hotspot access, loyalty incentives), and discontinue low-demand legacy plans.
+
+4. **City-Level Go-to-Market Strategy** — Apply defensive pricing and service focus in metros to protect existing revenue; drive adoption with targeted promotions in Tier-2 and Tier-3 cities where conditions are more favourable.
+
+5. **Measure and Monitor** — Implement early-warning dashboards tracking TAU and unsubscribed users by customer cohort and city to enable faster intervention.
+
+---
+
+### Analysis Questions and Answers
+
+**Q1. What is the overall change in total revenue after the 5G rollout?**
+
+**Answer:** Revenue declined from ₹15.977B to ₹15.897B, a change of −0.50%.
+
+---
+
+**Q2. Which KPI shows the most critical operational concern post-5G launch?**
+
+**Answer:** Total Active Users (TAU), which declined by 8.28% (84.4M → 77.4M).
+
+---
+
+**Q3. Which cities are the top revenue contributors?**
+
+**Answer:** Mumbai (~₹4.9B), Delhi (~₹3.9B), and Kolkata (~₹3.8B).
+
+---
+
+**Q4. Which cities showed revenue growth after the 5G rollout?**
+
+**Answer:** Lucknow (+1.82%), Gurgaon (+1.51%), and Patna (+1.48%).
+
+---
+
+**Q5. What is the change in unsubscribed users post-5G and what does it indicate?**
+
+**Answer:** Unsubscribed users increased from 5.6M to 7.0M (+23.5%), indicating a significant customer-retention problem following the rollout.
+
+---
+
+![Wavecon 5G Impact - Dashboard and KPI Overview](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_2_T_4_image_1.png)
+
+![Wavecon 5G Impact - Supporting Analysis and Slides](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_2_T_4_image_2.png)
 
 ---
 
@@ -889,8 +981,10 @@ Each column value represents the count of records belonging to that category wit
 - A star schema connecting a single dimension table to two fact tables is an effective pattern for benchmark versus actual comparisons.
 - SQL debugging requires careful attention to syntax rules: keyword ordering such as `WHERE` before `GROUP BY`, correct use of aliases, matching quote styles, and closing all open parentheses and `CASE` statements with the `END` keyword.
 - Power Query pivot and merge operations can fully automate the production of structured city-level summary reports that would otherwise require manual effort each week.
-- Separating DAX measures into a dedicated measures table keeps the Power BI model organized and easier to maintain as the number of calculations grows.
+- Separating DAX measures into a dedicated measures table keeps the Power BI model organised and easier to maintain as the number of calculations grows.
+- Business impact analysis of a technology rollout must evaluate both unit-level metrics (ARPU) and volume metrics (TAU, churn) together — a positive unit metric can mask a deteriorating volume position.
+- City-level segmentation is essential in multi-market analyses; national averages often conceal significant regional variation that drives strategic decision-making.
 
 ---
 
-*Deepak Biswas - Week 2 Internship Report*
+*Deepak Biswas — Week 2 Internship Report*
