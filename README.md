@@ -7,6 +7,18 @@
 Completed a structured Data Analytics Internship involving real-world business datasets, focusing on data cleaning, analysis, dashboarding, and business insights generation.
 
 ---
+## 🔥 Featured Project: HR Attendance Dashboard
+
+Developed an interactive dashboard to analyze employee attendance, work-from-home trends, and key workforce metrics.
+
+### Key Highlights:
+- Analyzed employee attendance dataset to identify patterns and trends  
+- Evaluated WFH percentages and employee participation metrics  
+- Built KPI-driven dashboard for business insights  
+
+📊 **Dashboard Preview:**  
+![Dashboard](./Assets/Images/Image_1_HR%20Report%20Analysis%20Dashboard.jpg)
+---
 
 ## Skills & Tools
 - Excel (Data Cleaning, Power Query)  
