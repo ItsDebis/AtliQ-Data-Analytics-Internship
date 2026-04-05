@@ -73,6 +73,10 @@ Good luck with your task!
 - **Title Case Names:** Applied title case transformation to all employee name values.
 - **Map Status Abbreviations:** Replaced all full-form status values with their corresponding abbreviations using a mapping transformation in Power Query.
 
+![Data Cleaning - Power Query View](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_1_image_1.png)
+
+![Data Model - Power BI View](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_1_image_2.png)
+
 ---
 
 ## Work and Response - Task 2 Analysis
@@ -160,12 +164,12 @@ DIVIDE(
 
 **Result:**
 
-| Day       | Attendance Percentage |
-|-----------|-----------------------|
-| Tuesday   | 97.53% - Highest      |
-| Wednesday | 95.43%                |
-| Monday    | 93.41%                |
-| Sunday    | 14.06% - Lowest       |
+| Day       | Attendance Percentage  |
+|-----------|------------------------|
+| Tuesday   | 97.53% - Highest       |
+| Wednesday | 95.43%                 |
+| Monday    | 93.41%                 |
+| Sunday    | 14.06% - Lowest        |
 
 ---
 
@@ -223,6 +227,8 @@ COUNTROWS(
 | Employees with WFH Greater Than 10% - April  | 16                |
 | Highest Attendance Day - June                | Tuesday at 97.53% |
 
+![Employee Attendance Analysis Dashboard](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_1_image_3.png)
+
 ---
 
 ## E-Mail 2 - Data Normalization Task
@@ -256,6 +262,8 @@ The original dataset was a single denormalized table containing all of the follo
 
 All attributes were stored in one table, resulting in redundancy and repeated descriptive information.
 
+![Denormalized Source Table - fact_order_lines](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_2_image_1.png)
+
 ---
 
 ### Dimension Tables Created
@@ -275,6 +283,8 @@ All attributes were stored in one table, resulting in redundancy and repeated de
 - Columns retained: `order_placement_date` renamed to `date`, `mmm_yy`, `week_no`
 - Duplicates removed
 
+![Normalized Output - Fact and Dimension Tables](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_2_image_2.png)
+
 ---
 
 ### Fact Table
@@ -283,6 +293,8 @@ All attributes were stored in one table, resulting in redundancy and repeated de
 
 - Columns retained: `order_id`, `order_placement_date`, `customer_id`, `product_id`, `order_qty`, `delivery_qty`
 - No duplicates removed - each row represents a unique transaction-level record
+
+![Power Query - Fact and Dimension Table Setup](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_2_image_3.png)
 
 ---
 
@@ -296,6 +308,8 @@ dim_dates[date]             --  1 to Many  -->  fact_orders[order_placement_date
 
 - Cardinality: One-to-Many
 - Cross filter direction: Single
+
+![Star Schema - Model View in Power BI](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_2_image_4.png)
 
 ---
 
@@ -316,6 +330,8 @@ As part of your internship, we will be covering the SCRUM methodology in softwar
 It is mandatory for you to complete the SCRUM Training Series available at https://scrumtrainingseries.com/
 
 Good luck with your training!
+
+![SCRUM Training Series - Website Overview](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_1_T_3_image_1.png)
 
 ---
 
@@ -387,10 +403,10 @@ Clarify and decompose higher-priority Product Backlog Items before Sprint Planni
 
 **Two Topics of Sprint Planning**
 
-| Topic          | What Happens                                                                      |
-|----------------|-----------------------------------------------------------------------------------|
-| Topic 1 - What | Product Owner presents top priorities, team selects PBIs, Sprint Goal is agreed   |
-| Topic 2 - How  | Development Team creates Sprint Backlog with tasks, design, and testing steps     |
+| Topic          | What Happens                                                                    |
+|----------------|---------------------------------------------------------------------------------|
+| Topic 1 - What | Product Owner presents top priorities, team selects PBIs, Sprint Goal is agreed |
+| Topic 2 - How  | Development Team creates Sprint Backlog with tasks, design, and testing steps   |
 
 **Sprint Goal**
 
