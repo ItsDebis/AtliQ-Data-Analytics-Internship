@@ -65,6 +65,16 @@ Developed an interactive dashboard to analyze employee attendance, work-from-hom
 - Gained experience in end-to-end analytics workflow  
 
 ---
+## 📌 Key Achievements
 
+- Performed data cleaning and transformation on employee datasets to improve data consistency and usability  
+- Analyzed attendance and WFH trends to identify workforce behavior patterns  
+- Conducted variance analysis to compare expected vs actual performance metrics  
+- Debugged SQL queries to ensure accurate data extraction and reporting  
+- Automated reporting workflows using Excel and Power Query techniques  
+- Translated business requirements into structured dashboards and analytical solutions  
+- Developed end-to-end Power BI dashboards to visualize key business KPIs  
+- Generated actionable insights to support data-driven decision-making  
+---
 ## Repository Purpose
 This repository serves as a complete documentation of my internship work and acts as proof of hands-on experience in data analytics and business problem-solving.
