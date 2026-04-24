@@ -15,8 +15,10 @@
 4. [Week 2 — Variance Analysis, SQL Debugging, Report Automation, and 5G Impact Analysis](#week-2--variance-analysis-sql-debugging-report-automation-and-5g-impact-analysis)
 5. [Week 3 — Requirements Analysis and Dashboard Mockup Design](#week-3--requirements-analysis-and-dashboard-mockup-design)
 6. [Week 4 — Shield Insurance Power BI Dashboard](#week-4--shield-insurance-power-bi-dashboard)
-7. [Key Learnings](#key-learnings)
-8. [Conclusion](#conclusion)
+7. [Key Contributions](#key-contributions)
+8. [Key Learnings](#key-learnings)
+9. [Conclusion](#conclusion)
+10. [Live Dashboard](#live-dashboard)
 
 ---
 
@@ -850,6 +852,20 @@ Excepted Settlement = ROUND(
 
 ---
 
+## Key Contributions
+
+The following points summarize the measurable impact and analytical contributions made across the four weeks of this internship.
+
+| # | Contribution |
+|---|--------------|
+| 1 | Analyzed HR attendance data across **6,200+ records and 99 employees**, surfacing absenteeism and remote-work patterns to support workforce planning |
+| 2 | Evaluated order and delivery performance across **10+ customers**, identifying **5 underperforming accounts** to prioritize operational improvements |
+| 3 | Translated unstructured client inputs into **15+ analytical deliverables** and built a **3-page Power BI dashboard** serving insights for **26,841 customers** |
+| 4 | Assessed revenue trends across **5+ markets**, highlighting approximately **40% regional concentration** and monthly fluctuations to support risk planning |
+| 5 | Analyzed sales-channel mix, finding **55%+ of revenue concentrated in agent-led channels**, and recommended a digital shift for scalable, lower-cost growth |
+
+---
+
 ## Key Learnings
 
 - Data cleaning is foundational. No analysis is reliable without first resolving data quality issues at the source
@@ -869,6 +885,16 @@ Excepted Settlement = ROUND(
 This internship represented a complete end-to-end data analytics engagement — from raw data cleaning in Week 1 through SQL debugging, report automation, and stakeholder presentations in Week 2, structured project planning in Week 3, and final dashboard delivery in Week 4.
 
 The culminating deliverable — the Shield Insurance Power BI Pilot Dashboard — addressed all 17 client requirements across three analytical views and was accompanied by a full DAX metrics list and user documentation. The project demonstrated the ability to translate business requirements into a technical solution, communicate findings clearly to non-technical stakeholders, and deliver production-ready analytical work under real project constraints.
+
+---
+
+## Live Dashboard
+
+The Shield Insurance Power BI dashboard built during this internship is published and accessible live. The dashboard is fully interactive — all filters, slicers, and page navigation are functional.
+
+**[View Live Dashboard — Shield Insurance Power BI](https://app.powerbi.com/view?r=eyJrIjoiNTc0N2M4ZTMtMGY5MC00MzU0LTlhMmUtYzk4YWMyNzRiY2ZlIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)**
+
+> Click the link above to open the live dashboard directly in your browser. No login is required.
 
 ---
 
