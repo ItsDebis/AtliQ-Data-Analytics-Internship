@@ -974,7 +974,15 @@ Revenue per customer increased (positive), but the total user base shrank (negat
 ![Wavecon 5G Impact - Supporting Analysis and Slides](https://raw.githubusercontent.com/ItsDebis/AtliQ-Data-Analytics-Internship/main/Assets/Images/Week_2_T_4_image_2.png)
 
 ---
+## Live Dashboard
 
+You can explore the interactive Power BI dashboard here:
+
+[View Live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiYTlhMmExZDAtNjA4Yy00NDdhLTk5MWItZWRiMjM0YzlhNDcwIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)
+
+
+
+---
 ## Key Takeaways
 
 - Variance analysis using `TREATAS` in DAX enables accurate cross-table month-wise filtering even when tables are not directly related on the same column.
