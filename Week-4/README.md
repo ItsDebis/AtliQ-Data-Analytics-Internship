@@ -224,9 +224,7 @@ You can explore the interactive Power BI dashboard here:
 
 [View Live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNTc0N2M4ZTMtMGY5MC00MzU0LTlhMmUtYzk4YWMyNzRiY2ZlIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9&pageName=d88767304152b4646000)
 
-### Dashboard Preview
 
-[![Shield Insurance Dashboard](Shield_Insurance.png)](https://app.powerbi.com/view?r=eyJrIjoiNTc0N2M4ZTMtMGY5MC00MzU0LTlhMmUtYzk4YWMyNzRiY2ZlIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9&pageName=d88767304152b4646000)
 ---
 
 ## Key Insights & Findings
